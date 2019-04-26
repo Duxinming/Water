@@ -1,0 +1,28 @@
+<view>
+    <van-cell class="height" title="寝室楼" value='{{ showLocal }}' is-link arrow-direction="down" bind:click='showLocal' />
+    <van-popup show="{{ currentLocal }}" position="bottom" overlay="{{ true }}" bind:close="onCloseLocal" bind:click-overlay="onCloseLocal">
+        <van-picker show-toolbar="{{ true }}" columns="{{ columns }}" bind:change="onChange" bind:cancel='onCloseLocal' bind:confirm='onCloseAndGetLocal' />
+    </van-popup>
+    <view class="box">
+        <van-cell-group>
+            <van-field size='large' value="{{ userNum }}" input-align='{{right}}' clearable label="寝室号" placeholder="请输入寝室号" type='number' maxlength='{{length}}' bind:input='changeNum' />
+        </van-cell-group>
+    </view>
+    <van-cell title="送达时间" value="{{ showDate }}" is-link arrow-direction="down" bind:click="showTime" />
+    <van-popup show="{{ showTime }}" position="bottom" overlay="{{ true }}" bind:close="onCloseTime">
+        <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput" bind:confirm='onCloseAndGetValue' bind:cancel='onCloseTime' />
+    </van-popup>
+    <van-button type="danger" bind:click='search'>搜索</van-button>
+    <van-popup show="{{ showFail }}" bind:close="onCloseFail" bind:click-overlay='onCloseFail' custom-style='height: 25vh; width: 50vw; line-height: 25vh; text-align: center;'>
+        系统繁忙，请稍后重试~
+    </van-popup>
+    <view wx:for="{{article}}" wx:key="unique">
+        <van-cell label="{{item.time}}" value="寝室号:{{item.num}}" size="large" title="{{item.local[0]}} 公寓楼:{{item.local[1]}}" />
+        <view>
+            <van-button type="danger" bind:click='down' data-id="{{item._id}}" data-down="{{item.down}}" data-index='{{index}}'>
+                {{item.down?'已送达':'未送达'}}
+            </van-button>
+             
+        </view>
+    </view>
+</view>

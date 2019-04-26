@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-button": "/van-ui/vant-weapp/lib/button/index",
+    "van-field": "/van-ui/vant-weapp/dist/field/index",
+    "van-popup": "/van-ui/vant-weapp/lib/popup/index",
+    "van-cell": "/van-ui/vant-weapp/dist/cell/index",  
+    "van-cell-group": "/van-ui/vant-weapp/dist/cell-group/index",
+    "van-datetime-picker": "/van-ui/vant-weapp/dist/datetime-picker/index",
+    "van-picker": "/van-ui/vant-weapp/dist/picker/index"
+
+  }
+}
